@@ -1,0 +1,26 @@
+HKCR
+{
+	ReadCardX.GetCardInfo.1 = s 'GetCardInfo Class'
+	{
+		CLSID = s '{D54DAD92-CB31-44A2-AA87-B0092F97CE90}'
+	}
+	ReadCardX.GetCardInfo = s 'GetCardInfo Class'
+	{
+		CLSID = s '{D54DAD92-CB31-44A2-AA87-B0092F97CE90}'
+		CurVer = s 'ReadCardX.GetCardInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D54DAD92-CB31-44A2-AA87-B0092F97CE90} = s 'GetCardInfo Class'
+		{
+			ProgID = s 'ReadCardX.GetCardInfo.1'
+			VersionIndependentProgID = s 'ReadCardX.GetCardInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{5AFC8815-9AC1-4D8F-9ECB-0EC3A47E703F}'
+		}
+	}
+}

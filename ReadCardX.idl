@@ -1,0 +1,47 @@
+// ReadCardX.idl : IDL source for ReadCardX
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ReadCardX.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(50646DBE-557E-47AD-96EC-6E4EA38DF12F),
+	dual,
+	nonextensible,
+	helpstring("IGetCardInfo Interface"),
+	pointer_default(unique)
+]
+interface IGetCardInfo : IDispatch{
+	[id(1), helpstring("method GetCardNo")] HRESULT GetCardNo([in] SHORT cr_type, [in] LONG port_num, LONG baud_rate, [out,retval] LONG* card_no);
+};
+[
+	uuid(5AFC8815-9AC1-4D8F-9ECB-0EC3A47E703F),
+	version(1.0),
+	helpstring("ReadCardX 1.0 Type Library")
+]
+library ReadCardXLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(B3DCBAB2-7327-4707-9627-079DADC771AE),
+		helpstring("_IGetCardInfoEvents Interface")
+	]
+	dispinterface _IGetCardInfoEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(D54DAD92-CB31-44A2-AA87-B0092F97CE90),
+		helpstring("GetCardInfo Class")
+	]
+	coclass GetCardInfo
+	{
+		[default] interface IGetCardInfo;
+		[default, source] dispinterface _IGetCardInfoEvents;
+	};
+};
